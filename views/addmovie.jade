@@ -1,11 +1,14 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
 
+  h1 ADD MOVIE
 
-
+  form(method="post")
+        input.form-control(type="text", placeholder="movie", name="moviename")
+        input.form-control(type='text', placeholder='release date', name="releasedate")
+        textarea.form-control(rows='10', cols='100' placeholder="description" name="description")
+        button.form-control(type="submit") Submit Movie
 
 
   footer.bmdfooter

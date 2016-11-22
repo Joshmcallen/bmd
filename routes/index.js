@@ -86,6 +86,38 @@ router.post('/adduser', function(req, res) {
 });
 ///////////////////////////////////////////////////////////////
 
+
+///////////////////////////////////////////////////////////////
+//get addmovie
+router.get('/addmovie', function(req, res, next){
+  res.render('addmovie', {title: 'Add Movie'});
+});
+//post to addpost
+router.post('/addmovie', function(req, res, next){
+
+  //setting collection 'articles'
+  var movies = req.db.get('movies');
+
+  //inserting to collection
+  movies.insert({
+    "moviename": req.body.moviename,
+    "releasedate": req.body.releasedate,
+    "description": req.body.description
+
+  }, function (err, doc) {
+      if (err) {
+          // If it failed, return error
+          res.send("There was a problem adding to database.");
+      }
+      else {
+          // And forward to success page
+          res.redirect("/addmovie");
+      }
+  });
+});
+////////////////////////////////////////////////////////////////
+
+
 /////////////////////Footer Views/////////////////////////////
 ///////////////////////////////////////////////////////////////
 router.get('/about', function(req, res, next){
