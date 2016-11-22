@@ -7,10 +7,34 @@ a {
   color: #00B7FF;
 }
 
-.logo {
+.logoheader {
   margin-bottom: 2.5em;
   margin-left: 20em;
   width: 40em;
   height: 4em;
+}
 
+.logofooter {
+  /*margin-bottom: 2.5em;
+  margin-left: 20em;*/
+  width: 30em;
+  height: 4em;
+}
+
+.bmdfooter {
+  background-color: #000000;
+  padding-top: 2em;
+  padding-bottom: 5em;
+}
+.bmdfooter a {
+  color: #FFFFFF;
+}
+.bmdfooter h4 {
+  color: #FF4D00;
+}
+.bmdfooter ul {
+  list-style-type: none;
+}
+.bmdfooter li {
+  padding-top: .5em;
 }
