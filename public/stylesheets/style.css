@@ -7,13 +7,30 @@ a {
   color: #00B7FF;
 }
 
+#myNavbar a{
+  color: #FFFFFF;
+  font-weight: bold;
+}
+#myNavbar a:hover{
+  background-color: #444444;
+}
+.dropdown-menu{
+  background-color: #444444;
+}
+.dropdown-menu li {
+  padding-top: .5em;
+  padding-bottom: .5em;
+}
+.dropdown-menu li a {
+  font-weight: bold;
+}
+
 .logoheader {
   margin-bottom: 2.5em;
   margin-left: 20em;
   width: 40em;
   height: 4em;
 }
-
 .logofooter {
   /*margin-bottom: 2.5em;
   margin-left: 20em;*/
