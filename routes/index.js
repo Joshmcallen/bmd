@@ -26,13 +26,65 @@ router.get('/podcasts', function(req, res, next){
   res.render('trailers', {title: 'Podcasts'});
 });
 
+///////////////////////////////////////////////////////////////
+//get addpost
 router.get('/addpost', function(req, res, next){
   res.render('addpost', {title: 'Add Post'});
 });
+//post to addpost
+router.post('/addpost', function(req, res, next){
+  
+  //setting collection 'articles'
+  var articles = req.db.get('articles');
 
+  //inserting to collection
+  articles.insert({
+    "authorname": req.body.authorname,
+    "title": req.body.title,
+    "byline": req.body.byline,
+    "content": req.body.content
+
+  }, function (err, doc) {
+      if (err) {
+          // If it failed, return error
+          res.send("There was a problem adding to database.");
+      }
+      else {
+          // And forward to success page
+          res.redirect("/addpost");
+      }
+  });
+});
+////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////
+//get adduser
 router.get('/adduser', function(req, res, next){
   res.render('adduser', {title: 'Add User'});
 });
+//post to adduser
+router.post('/adduser', function(req, res) {
+
+    //setting collection 'usercollection'
+    var usercollection = req.db.get('usercollection');
+
+    // Submit to the DB
+    usercollection.insert({
+        "authorname": req.body.authorname,
+        "authorbio": req.body.authorbio
+    }, function (err, doc) {
+        if (err) {
+            // If it failed, return error
+            res.send("There was a problem adding to database.");
+        }
+        else {
+            // And forward to success page
+            res.redirect("/adduser");
+        }
+    });
+});
+///////////////////////////////////////////////////////////////
 
 
 
