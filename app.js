@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 /////////// Congfiguring MongoDB and Monk////////////
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/dbm');
+var db = monk('localhost:27017/bmd');
 ////////////////////////////////////////////////////
 
 
