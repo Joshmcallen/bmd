@@ -33,7 +33,7 @@ router.get('/addpost', function(req, res, next){
 });
 //post to addpost
 router.post('/addpost', function(req, res, next){
-  
+
   //setting collection 'articles'
   var articles = req.db.get('articles');
 
@@ -86,6 +86,25 @@ router.post('/adduser', function(req, res) {
 });
 ///////////////////////////////////////////////////////////////
 
+/////////////////////Footer Views/////////////////////////////
+///////////////////////////////////////////////////////////////
+router.get('/about', function(req, res, next){
+  res.render('about', {title: 'About'});
+});
+router.get('/advertise', function(req, res, next){
+  res.render('advertise', {title: 'Advertise'});
+});
+router.get('/contact', function(req, res, next){
+  res.render('contact', {title: 'Contact'});
+});
+router.get('/privacy', function(req, res, next){
+  res.render('privacy', {title: 'Privacy'});
+});
+router.get('/terms', function(req, res, next){
+  res.render('terms', {title: 'Terms'});
+});
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
 
 
 module.exports = router;
