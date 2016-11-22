@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+.logo {
+  margin-bottom: 2.5em;
+  margin-left: 20em;
+  width: 40em;
+  height: 4em;
+
+}
