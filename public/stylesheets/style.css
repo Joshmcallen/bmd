@@ -63,3 +63,18 @@ a {
 .bmdfooter li {
   padding-top: .5em;
 }
+
+.thumbnail {
+  border: none;
+  /*height: 50%;
+  width: 100%;*/
+}
+.image-responsive {
+  margin-top: -1.5em;
+  width: 1022px;
+  height: 575px;
+}
+.articleImage{
+  width: 1022px;
+  height: 575px;
+}

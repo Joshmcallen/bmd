@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var ObjectId = require('mongodb').ObjectId;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -7,11 +8,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/news', function(req, res, next){
-
   var articles = req.db.get('articles');
   articles.find({}, {}, function(e, articles) {
     if (e) throw e;
     res.render('news', {title: 'News', articles: articles});
+    });
+});
+
+router.get('/articlelayout/:id', function(req, res, next){
+  var articles = req.db.get('articles');
+  var test = req.params.id;
+  var _id = new ObjectId(test); //test =id
+  articles.find( {_id : _id}, {}, function(e, articles) {
+    if (e) throw e;
+    console.log(articles);
+    res.render('articlelayout', {title: 'Temp', articles: articles});
     });
 });
 

@@ -2,8 +2,8 @@ extends layout
 
 block content
 
-  div #{articles[0].authorname}
-  div #{articles[0]._id}
+  //div #{articles[0].authorname}
+  //div #{articles[0]._id}
   .container
 
     .container
@@ -17,13 +17,15 @@ block content
 
 
     .container
-
       .row
         each article, i in articles
           .col-sm-6.col-md-4.col-lg-3
-            img.img-responsive(src='#{article.articlepic}')
-            p By #{article.authorname}
+            a(href = '/articlelayout/#{article._id}' )
+              img.img-responsive(src='http://placehold.it/300x172')
+            p By #{article.authorname} //,Date
             p #{article.byline}
+            p
+              a(href='/author/#{article.authorname}') #{article.authorname}
 
         //  .col-sm-6.col-md-4.col-lg-3
         //    img.img-responsive(src='http://placehold.it/300x172')
@@ -46,19 +48,6 @@ block content
         //  .col-sm-6.col-md-4.col-lg-3
         //    img.img-responsive(src='http://placehold.it/300x172')
         //    p Article8
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
