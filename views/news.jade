@@ -2,47 +2,106 @@ extends layout
 
 block content
 
+  div #{articles[0].authorname}
+  div #{articles[0]._id}
+  .container
 
-  footer.bmdfooter
     .container
       .row
-        .col-lg-5.col-md-5
-          img.logofooter(src='../images/bmd-logo-footer.png')
-        .col-lg-2.col-md-2
-          ul
-            li
-              h4 Sections
-            li
-              a(href='/news')  News
-            li
-              a(href='/reviews')  Reviews
-            li
-              a(href='/trailers')   Trailers
-            li
-              a(href='/podcasts')   Podcasts
-        .col-lg-2.col-md-2
-          ul
-            li
-              h4 B.M.D
-            li
-              a(href='/about') About
-            li
-              a(href='/advertise') Advertise
-            li
-              a(href='/contact') Contact
-            li
-              a(href='/privacy') Privacy
-            li
-              a(href='/terms') Terms
-        .col-lg-2.col-md-2
-          ul
-            li
-              h4 Elsewhere
-            li
-              a(href='http://www.facebook.com/birthmoviesdeath') Facebook
-            li
-              a(href='http://twitter.com/bmoviesd') Twitter
-            li
-              a(href='http://birthmoviesdeath.tumblr.com/') Tumblr
-            li
-              a(href='http://instagram.com/birthmoviesdeath') Instagram
+        .col-lg-12.col-md-12
+          header
+            center
+              h1 NEWS
+
+
+
+
+    .container
+
+      .row
+        each article, i in articles
+          .col-sm-6.col-md-4.col-lg-3
+            img.img-responsive(src='#{article.articlepic}')
+            p By #{article.authorname}
+            p #{article.byline}
+
+        //  .col-sm-6.col-md-4.col-lg-3
+        //    img.img-responsive(src='http://placehold.it/300x172')
+        //    p Article2
+        //  .col-sm-6.col-md-4.col-lg-3
+        //    img.img-responsive(src='http://placehold.it/300x172')
+        //    p Article3
+        //  .col-sm-6.col-md-4.col-lg-3
+        //    img.img-responsive(src='http://placehold.it/300x172')
+        //    p Article4
+        //  .col-sm-6.col-md-4.col-lg-3
+        //    img.img-responsive(src='http://placehold.it/300x172')
+        //    p Article5
+        //  .col-sm-6.col-md-4.col-lg-3
+        //    img.img-responsive(src='http://placehold.it/300x172')
+        //    p Article6
+        //  .col-sm-6.col-md-4.col-lg-3
+        //    img.img-responsive(src='http://placehold.it/300x172')
+        //    p Article7
+        //  .col-sm-6.col-md-4.col-lg-3
+        //    img.img-responsive(src='http://placehold.it/300x172')
+        //    p Article8
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    footer.bmdfooter
+      .container
+        .row
+          .col-lg-5.col-md-5
+            img.logofooter(src='../images/bmd-logo-footer.png')
+          .col-lg-2.col-md-2
+            ul
+              li
+                h4 Sections
+              li
+                a(href='/news')  News
+              li
+                a(href='/reviews')  Reviews
+              li
+                a(href='/trailers')   Trailers
+              li
+                a(href='/podcasts')   Podcasts
+          .col-lg-2.col-md-2
+            ul
+              li
+                h4 B.M.D
+              li
+                a(href='/about') About
+              li
+                a(href='/advertise') Advertise
+              li
+                a(href='/contact') Contact
+              li
+                a(href='/privacy') Privacy
+              li
+                a(href='/terms') Terms
+          .col-lg-2.col-md-2
+            ul
+              li
+                h4 Elsewhere
+              li
+                a(href='http://www.facebook.com/birthmoviesdeath') Facebook
+              li
+                a(href='http://twitter.com/bmoviesd') Twitter
+              li
+                a(href='http://birthmoviesdeath.tumblr.com/') Tumblr
+              li
+                a(href='http://instagram.com/birthmoviesdeath') Instagram

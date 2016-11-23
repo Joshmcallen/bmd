@@ -7,7 +7,12 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/news', function(req, res, next){
-  res.render('news', {title: 'News'});
+
+  var articles = req.db.get('articles');
+  articles.find({}, {}, function(e, articles) {
+    if (e) throw e;
+    res.render('news', {title: 'News', articles: articles});
+    });
 });
 
 router.get('/movies', function(req, res, next) {
@@ -42,7 +47,8 @@ router.post('/addpost', function(req, res, next){
     "authorname": req.body.authorname,
     "title": req.body.title,
     "byline": req.body.byline,
-    "content": req.body.content
+    "content": req.body.content,
+    "articlepic": req.body.articlepic
 
   }, function (err, doc) {
       if (err) {

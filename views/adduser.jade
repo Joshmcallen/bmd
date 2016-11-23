@@ -5,6 +5,7 @@ block content
   h1 ADD USER
 
   form(method="post")
+        input.form-control(type="file", name="authorpic")
         input.form-control(type="text", placeholder="author", name="authorname")
         textarea.form-control(rows='10', cols='100' placeholder="author bio" name="authorbio")
         button.form-control(type="submit") Create New User
