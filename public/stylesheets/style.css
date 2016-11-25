@@ -74,7 +74,33 @@ a {
   width: 1022px;
   height: 575px;
 }
+
+#articlediv {
+  width: 70%;
+}
 .articleImage{
   width: 1022px;
   height: 575px;
+}
+.articleTitle {
+  color: #ffffff;
+  font-weight: bold;
+  font-family: Comic Sans;
+  background-color: #000000;
+  margin-top: -2em;
+  /*width: 90%;*/
+  padding-top: .5em;
+  padding-bottom: .5em;
+  font-size: 30px;
+}
+.articleByline {
+}
+.articleAuthor a {
+  color: #FF4D00;
+}
+.articleContent {
+}
+
+#authorDiv {
+
 }

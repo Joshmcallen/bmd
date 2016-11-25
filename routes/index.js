@@ -15,6 +15,12 @@ router.get('/news', function(req, res, next){
     });
 });
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// router.get('/articlepage', function(req, res, next) {
+//   res.render('articlepage', {title: 'article page'});
+// });
+
 router.get('/articlelayout/:id', function(req, res, next){
   var articles = req.db.get('articles');
   var test = req.params.id;
@@ -25,6 +31,26 @@ router.get('/articlelayout/:id', function(req, res, next){
     res.render('articlelayout', {title: 'Temp', articles: articles});
     });
 });
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+// router.get('/authorpage', function(req, res, next) {
+//   res.render('authorpage', {title: "author page"});
+// });
+// router.get('/authorlayout/:id', function(req, res, next){
+//   var articles = req.db.get('articles');
+//   var test = req.params.id;
+//   var _id = new ObjectId(test); //test =id
+//   articles.find( {_id : _id}, {}, function(e, articles) {
+//     if (e) throw e;
+//     console.log(articles);
+//     res.render('authorlayout', {title: 'Temp', articles: articles});
+//     });
+// });
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
 
 router.get('/movies', function(req, res, next) {
   res.render('movies', {title: 'Movies'});
