@@ -15,46 +15,61 @@ router.get('/news', function(req, res, next){
     });
 });
 
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-// router.get('/articlepage', function(req, res, next) {
-//   res.render('articlepage', {title: 'article page'});
-// });
 
-router.get('/articlelayout/:id', function(req, res, next){
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+router.get('/article/:id', function(req, res, next){
   var articles = req.db.get('articles');
   var test = req.params.id;
   var _id = new ObjectId(test); //test =id
   articles.find( {_id : _id}, {}, function(e, articles) {
     if (e) throw e;
     console.log(articles);
-    res.render('articlelayout', {title: 'Temp', articles: articles});
+    res.render('article', {title: 'temp', articles: articles});
     });
 });
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-// router.get('/authorpage', function(req, res, next) {
-//   res.render('authorpage', {title: "author page"});
-// });
-// router.get('/authorlayout/:id', function(req, res, next){
-//   var articles = req.db.get('articles');
-//   var test = req.params.id;
-//   var _id = new ObjectId(test); //test =id
-//   articles.find( {_id : _id}, {}, function(e, articles) {
-//     if (e) throw e;
-//     console.log(articles);
-//     res.render('authorlayout', {title: 'Temp', articles: articles});
-//     });
-// });
-////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-
-
-
-router.get('/movies', function(req, res, next) {
-  res.render('movies', {title: 'Movies'});
+router.get('/authorpage', function(req, res, next) {
+  res.render('authorpage', {title: "author page"});
 });
+router.get('/author/:id', function(req, res, next){
+  var authors = req.db.get('authors');
+  var test = req.params.id;
+  var _id = new ObjectId(test); //test =id
+  authors.find( {_id : _id}, {}, function(e, authors) {
+    if (e) throw e;
+    console.log(authors);
+    res.render('authorpage', {title: 'temp authorpage', authors: authors});
+    });
+});
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+router.get('/movies', function(req, res, next) {
+  var movies = req.db.get('movies');
+  movies.find({}, {}, function(e, movies) {
+    if (e) throw e;
+    res.render('movies', {title: 'temp movies', movies: movies});
+  });
+});
+router.get('/movies/:id', function(req, res, next){
+  var movies = req.db.get('movies');
+  var id = req.params.id;
+  var _id = new ObjectId(id);
+  movies.find( {_id: _id}, {}, function(e, movies) {
+    if (e) throw e;
+    console.log(movies);
+    res.render('moviespage', {title: 'temp movies', movies: movies});
+  });
+});
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 router.get('/reviews', function(req, res, next){
   res.render('reviews', {title: "Reviews"});
@@ -110,10 +125,10 @@ router.get('/adduser', function(req, res, next){
 router.post('/adduser', function(req, res) {
 
     //setting collection 'usercollection'
-    var usercollection = req.db.get('usercollection');
+    var authors = req.db.get('authors');
 
     // Submit to the DB
-    usercollection.insert({
+    authors.insert({
         "authorname": req.body.authorname,
         "authorbio": req.body.authorbio
     }, function (err, doc) {
