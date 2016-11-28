@@ -75,6 +75,12 @@ a {
   height: 575px;
 }
 
+#sectionHeader{
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #fe4901;
+  text-align: center;
+  text-decoration: underline;
+}
 #articlediv {
   width: 70%;
 }
@@ -104,3 +110,29 @@ a {
 #authorDiv {
 
 }
+
+#contactButtons {
+  background-color: #e8e7e7;
+  border-color: #e8e7e7;
+  border-radius: 0%;
+  color: #000000;
+  font-weight: bold;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 100%;
+}
+#contactButtons:hover {
+  background-color: #bbbbbb;
+  border-color: #bbbbbb;
+}
+#buttonText {
+  text-decoration: none;
+}
+.row {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    margin-bottom: 0;
+
+  }

@@ -8,21 +8,21 @@ block content
     .container
       .row
         .col-lg-12.col-md-12
-          header
-            center
+          header#sectionHeader
               h1 NEWS
 
 
               //div #{articles[0].authorname}
-             div #{articles[0].authorname}
+            //-div #{articles[0].authorname}
 
     .container
       .row
         each article, i in articles
           .col-sm-6.col-md-4.col-lg-3
+            a(href='/#{article.category}') #{article.category}
             a(href = '/article/#{article._id}' )
               img.img-responsive(src='http://placehold.it/300x172')
-            p By #{article.authorname} //,Date
+            p By #{article.authorname} #{article.articleDate}
             p #{article.byline}
             p
               a(href='/author/#{article.authorname}') #{article.authorname}

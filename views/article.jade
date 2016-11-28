@@ -89,8 +89,8 @@ html
                 h4.articleByline #{articles[0].byline}
                 h5.articleAuthor By 
                   a(href='/author/#{articles[0].authorname}') #{articles[0].authorname}
-                p.articleContent #{articles[0].content}
-                
+                p.articleContent !{articles[0].content.replace(/\n/g, '<br/>')}
+                //- p.articleContent !{escape(articles[0].content).replace(/\n/g, '<br/>')}
         .container
           .row
               #authorbiodiv.col-sm-12.col-md-12.col-lg-12
@@ -100,7 +100,7 @@ html
 
 
         block content
-
+          
 
 
 

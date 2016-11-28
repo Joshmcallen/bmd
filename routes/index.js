@@ -9,12 +9,18 @@ router.get('/', function(req, res, next) {
 
 router.get('/news', function(req, res, next){
   var articles = req.db.get('articles');
-  articles.find({}, {}, function(e, articles) {
+  articles.find({}, {sort: {articleDate: -1} }, function(e, articles) {
     if (e) throw e;
     res.render('news', {title: 'News', articles: articles});
     });
 });
-
+// router.get('/news', function(req, res, next){
+//   var articles = req.db.get('articles');
+//   articles.find({}, {"sort": ['articleDate', 'asc']}, function(e, articles) {
+//     if (e) throw e;
+//     res.render('news', {title: 'News', articles: articles});
+//     });
+// });
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,17 +76,35 @@ router.get('/movies/:id', function(req, res, next){
 });
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-
 router.get('/reviews', function(req, res, next){
-  res.render('reviews', {title: "Reviews"});
+  var articles = req.db.get('articles');
+  articles.find({"category": "Reviews"}, {sort: {articleDate: -1} }, function(e, articles) {
+    if (e) throw e;
+    res.render('reviews', {title: 'reviews temp', articles: articles});
+    });
 });
+// router.get('/reviews', function(req, res, next){
+//   var articles = req.db.get('articles');
+//   articles.find( { $query: {"category": "Reviews"}, $orderby: { articleDate: 1 }}, function(e, articles) {
+//     if (e) throw e;
+//     res.render('reviews', {title: 'reviews temp', articles: articles});
+//     });
+// });
 
 router.get('/trailers', function(req, res, next){
-  res.render('trailers', {title: 'Trailers'});
+  var articles = req.db.get('articles');
+  articles.find({"category": "Trailers"}, {sort: {articleDate: -1} }, function(e, articles) {
+    if (e) throw e;
+    res.render('trailers', {title: 'trailers temp', articles: articles});
+    });
 });
 
 router.get('/podcasts', function(req, res, next){
-  res.render('trailers', {title: 'Podcasts'});
+  var articles = req.db.get('articles');
+  articles.find({"category": "Podcasts"}, {sort: {articleDate: -1} }, function(e, articles) {
+    if (e) throw e;
+    res.render('podcasts', {title: 'Podcasts', articles: articles});
+    });
 });
 
 ///////////////////////////////////////////////////////////////
@@ -93,14 +117,17 @@ router.post('/addpost', function(req, res, next){
 
   //setting collection 'articles'
   var articles = req.db.get('articles');
+  var articleDate = Date();
 
   //inserting to collection
   articles.insert({
+    "category": req.body.category,
     "authorname": req.body.authorname,
     "title": req.body.title,
     "byline": req.body.byline,
     "content": req.body.content,
-    "articlepic": req.body.articlepic
+    "articlepic": req.body.articlepic,
+    "articleDate": articleDate
 
   }, function (err, doc) {
       if (err) {

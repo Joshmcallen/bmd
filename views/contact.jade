@@ -2,8 +2,21 @@ extends layout
 
 block content
 
-  p this is test
-  p this is test2
 
 
-  
+  .container
+    .row
+      .col-lg-8.col-md-8.col-sm-12.col-xs-12
+        header#sectionHeader
+          h1 CONTACT B.M.D.
+        div
+          a#buttonText(href='#')
+            button#contactButtons.btn.btn-primary.btn-lg.btn-block(type='button') Advertise with Us
+          a#buttonText(href='#')
+            button#contactButtons.btn.btn-primary.btn-lg.btn-block(type='button') Contact the Moderators
+          a#buttonText(href='#')
+            button#contactButtons.btn.btn-primary.btn-lg.btn-block(type='button') Pitch a Story
+          a#buttonText(href='#')
+            button#contactButtons.btn.btn-primary.btn-lg.btn-block(type='button') Report Website Issue
+          a#buttonText(href='#')
+            button#contactButtons.btn.btn-primary.btn-lg.btn-block(type='button') Send Us a Tip

@@ -5,6 +5,12 @@ block content
   h1 ADD ARTICLE
 
   form(method="post")
+  
+        select.form-control(type="text", name='category')
+          option News
+          option Reviews
+          option Trailers
+          option Podcasts
         input.form-control(type="file", name="authorpic")
         input.form-control(type="text", placeholder="author", name="authorname")
         input.form-control(type='text', placeholder='title', name="title")
