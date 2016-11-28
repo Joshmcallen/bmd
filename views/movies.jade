@@ -19,5 +19,6 @@ block content
           p #{movie.releasedate}
           p #{movie.description}
           p #{movie._id}
-          a(href = '/movies/#{movie._id}' )
-            img.img-responsive(src='http://placehold.it/248x368')
+          //- a(href = '/movies/#{movie._id}' )
+          //-   img.img-responsive(src='http://placehold.it/248x368')
+          img.img-responsive(src='#{movie.moviepic}')

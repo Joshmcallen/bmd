@@ -4,7 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
+//////////////////// Multer /////////////////////////
+var multer = require('multer');
+// var upload = multer({dest: 'public/images/uploads'});
 /////////// Congfiguring MongoDB and Monk////////////
 var mongo = require('mongodb');
 var monk = require('monk');
@@ -21,6 +23,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+//Multer
+app.use(multer({dest: 'public/images/uploads'}).single('moviepic'));
+// app.use(multer({dest: 'public/images/uploads'}).single('articlepic'));
+// app.use(multer({dest: 'public/images/uploads'}).single('authorpic'));
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

@@ -1,26 +1,49 @@
 var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectId;
+var multer = require('multer');
+// var upload = multer({dest: 'public/images/uploads'});
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 router.get('/news', function(req, res, next){
   var articles = req.db.get('articles');
-  articles.find({}, {sort: {articleDate: -1} }, function(e, articles) {
+  articles.find({"category": "News"}, {sort: {articleDate: -1} }, function(e, articles) {
     if (e) throw e;
     res.render('news', {title: 'News', articles: articles});
     });
 });
-// router.get('/news', function(req, res, next){
-//   var articles = req.db.get('articles');
-//   articles.find({}, {"sort": ['articleDate', 'asc']}, function(e, articles) {
-//     if (e) throw e;
-//     res.render('news', {title: 'News', articles: articles});
-//     });
-// });
+
+router.get('/reviews', function(req, res, next){
+  var articles = req.db.get('articles');
+  articles.find({"category": "Reviews"}, {sort: {articleDate: -1} }, function(e, articles) {
+    if (e) throw e;
+    res.render('reviews', {title: 'reviews temp', articles: articles});
+    });
+});
+
+router.get('/trailers', function(req, res, next){
+  var articles = req.db.get('articles');
+  articles.find({"category": "Trailers"}, {sort: {articleDate: -1} }, function(e, articles) {
+    if (e) throw e;
+    res.render('trailers', {title: 'trailers temp', articles: articles});
+    });
+});
+
+router.get('/podcasts', function(req, res, next){
+  var articles = req.db.get('articles');
+  articles.find({"category": "Podcasts"}, {sort: {articleDate: -1} }, function(e, articles) {
+    if (e) throw e;
+    res.render('podcasts', {title: 'Podcasts', articles: articles});
+    });
+});
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -35,7 +58,6 @@ router.get('/article/:id', function(req, res, next){
     res.render('article', {title: 'temp', articles: articles});
     });
 });
-////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
 router.get('/authorpage', function(req, res, next) {
@@ -76,38 +98,10 @@ router.get('/movies/:id', function(req, res, next){
 });
 ////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
-router.get('/reviews', function(req, res, next){
-  var articles = req.db.get('articles');
-  articles.find({"category": "Reviews"}, {sort: {articleDate: -1} }, function(e, articles) {
-    if (e) throw e;
-    res.render('reviews', {title: 'reviews temp', articles: articles});
-    });
-});
-// router.get('/reviews', function(req, res, next){
-//   var articles = req.db.get('articles');
-//   articles.find( { $query: {"category": "Reviews"}, $orderby: { articleDate: 1 }}, function(e, articles) {
-//     if (e) throw e;
-//     res.render('reviews', {title: 'reviews temp', articles: articles});
-//     });
-// });
 
-router.get('/trailers', function(req, res, next){
-  var articles = req.db.get('articles');
-  articles.find({"category": "Trailers"}, {sort: {articleDate: -1} }, function(e, articles) {
-    if (e) throw e;
-    res.render('trailers', {title: 'trailers temp', articles: articles});
-    });
-});
 
-router.get('/podcasts', function(req, res, next){
-  var articles = req.db.get('articles');
-  articles.find({"category": "Podcasts"}, {sort: {articleDate: -1} }, function(e, articles) {
-    if (e) throw e;
-    res.render('podcasts', {title: 'Podcasts', articles: articles});
-    });
-});
-
-///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //get addpost
 router.get('/addpost', function(req, res, next){
   res.render('addpost', {title: 'Add Post'});
@@ -140,10 +134,12 @@ router.post('/addpost', function(req, res, next){
       }
   });
 });
-////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-/////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //get adduser
 router.get('/adduser', function(req, res, next){
   res.render('adduser', {title: 'Add User'});
@@ -169,10 +165,12 @@ router.post('/adduser', function(req, res) {
         }
     });
 });
-///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
-///////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 //get addmovie
 router.get('/addmovie', function(req, res, next){
   res.render('addmovie', {title: 'Add Movie'});
@@ -180,14 +178,23 @@ router.get('/addmovie', function(req, res, next){
 //post to addpost
 router.post('/addmovie', function(req, res, next){
 
+
+  var moviepic = '';
+  req.file ? moviepic = `/images/uploads/${req.file.filename}` : moviepic = `/images/uploads/default.jpg`;
+
   //setting collection 'articles'
   var movies = req.db.get('movies');
+
 
   //inserting to collection
   movies.insert({
     "moviename": req.body.moviename,
     "releasedate": req.body.releasedate,
-    "description": req.body.description
+    "description": req.body.description,
+    "director": req.body.director,
+    "cast": req.body.cast,
+    "moviepic": moviepic
+
 
   }, function (err, doc) {
       if (err) {
@@ -196,11 +203,14 @@ router.post('/addmovie', function(req, res, next){
       }
       else {
           // And forward to success page
+          console.log(req.body);
+          console.log(req.file);
           res.redirect("/addmovie");
       }
   });
 });
-////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
 
 
 /////////////////////Footer Views/////////////////////////////
