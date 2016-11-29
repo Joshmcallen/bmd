@@ -4,13 +4,16 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var dotenv = require('dotenv');
+dotenv.load()
 //////////////////// Multer /////////////////////////
 var multer = require('multer');
 // var upload = multer({dest: 'public/images/uploads'});
 /////////// Congfiguring MongoDB and Monk////////////
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/bmd');
+const MLAB_URI = process.env.MLAB_URI;
+var db = monk(MLAB_URI);
 ////////////////////////////////////////////////////
 
 
