@@ -6,10 +6,19 @@ block content
 
   form(method="post" action="/addmovie" enctype="multipart/form-data")
     input.form-control(type="file", name="moviepic" )
+    select.form-control(type="text", name='rating')
+      option Unrated
+      option G
+      option PG
+      option PG-13
+      option R
+      option NC-17
     input.form-control(type="text", placeholder="movie", name="moviename")
     input.form-control(type='text', placeholder='director', name="director")
     input.form-control(type='text', placeholder='cast', name="cast")
+    input.form-control(type='text', placeholder="screenwriter", name='screenwriter')
     input.form-control(type='text', placeholder='release date', name="releasedate")
+    input.form-control(type='text' placeholder='trailer url', name='trailer')
     textarea.form-control(rows='10', cols='100' placeholder="description" name="description")
     
     button.form-control(type="submit") Submit Movie

@@ -24,9 +24,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 //Multer
-app.use(multer({dest: 'public/images/uploads'}).single('moviepic'));
-// app.use(multer({dest: 'public/images/uploads'}).single('articlepic'));
+// app.use(multer({dest: 'public/images/uploads'}).single('moviepic'));
+app.use(multer({dest: 'public/images/uploads'}).any('moviepic', 'authorpic', 'articlepic'));
 // app.use(multer({dest: 'public/images/uploads'}).single('authorpic'));
+
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));

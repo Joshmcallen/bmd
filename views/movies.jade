@@ -14,11 +14,22 @@ block content
   .container
     .row
       each movie, i in movies
-        .col-sm-6.col-md-4.col-lg-3
-          p #{movie.moviename}
-          p #{movie.releasedate}
-          p #{movie.description}
-          p #{movie._id}
+        .col-sm-8.col-md-8
+          .row
+            #movieImage.col-sm-4.col-md-5
+              a(href = '/movies/#{movie._id}' )
+                img.img-responsive(src='#{movie.moviepic}')
+            .col-sm-8.col-md-7
+              p 
+                strong #{movie.moviename}
+              p #{movie.releasedate}
+              p #{movie.description}
+              p 
+                strong Director: 
+                | #{movie.director}
+              p Cast: #{movie.cast}
+              //- p rating: #{movie.rating}
+          
+          //- id="movieImage"
           //- a(href = '/movies/#{movie._id}' )
-          //-   img.img-responsive(src='http://placehold.it/248x368')
-          img.img-responsive(src='#{movie.moviepic}')
+          //-   img.img-responsive(src='#{movie.moviepic}' id="movieImage")

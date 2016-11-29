@@ -112,6 +112,8 @@ router.post('/addpost', function(req, res, next){
   //setting collection 'articles'
   var articles = req.db.get('articles');
   var articleDate = Date();
+  var articlepic = '';
+  req.file ? articlepic = `/images/uploads/${req.file.filename}` : articlepic = `/images/uploads/default.jpg`;
 
   //inserting to collection
   articles.insert({
@@ -120,7 +122,7 @@ router.post('/addpost', function(req, res, next){
     "title": req.body.title,
     "byline": req.body.byline,
     "content": req.body.content,
-    "articlepic": req.body.articlepic,
+    "articlepic": articlepic,
     "articleDate": articleDate
 
   }, function (err, doc) {
@@ -150,10 +152,15 @@ router.post('/adduser', function(req, res) {
     //setting collection 'usercollection'
     var authors = req.db.get('authors');
 
+    var authorpic = '';
+    req.file ? authorpic = `/images/uploads/${req.file.filename}` : authorpic = `/images/uploads/default.jpg`;
+
+
     // Submit to the DB
     authors.insert({
         "authorname": req.body.authorname,
-        "authorbio": req.body.authorbio
+        "authorbio": req.body.authorbio,
+        "authorpic": authorpic
     }, function (err, doc) {
         if (err) {
             // If it failed, return error
@@ -193,7 +200,10 @@ router.post('/addmovie', function(req, res, next){
     "description": req.body.description,
     "director": req.body.director,
     "cast": req.body.cast,
-    "moviepic": moviepic
+    "moviepic": moviepic,
+    "rating": req.body.rating,
+    "trailer": req.body.trailer,
+    "screenwriter": req.body.screenwriter
 
 
   }, function (err, doc) {

@@ -134,5 +134,22 @@ a {
     margin-right: auto;
     margin-top: 0;
     margin-bottom: 0;
-
   }
+
+#movieImage {
+  height:  368px;
+  width:   248px;
+}
+#moviePageImage {
+  height: 451px;
+  width: 304px;
+}
+#imageThumbnail {
+  height: 172px;
+  width: 300px;
+}
+#articleHeaderImage{
+  width: 1022px;
+  height: 575px;
+  /*https://placeholdit.imgix.net/~text?txtsize=85&txt=1022×575&w=1022&h=575*/
+}

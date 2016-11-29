@@ -75,8 +75,9 @@ html
 
 
         .thumbnail
-          img.image-responsive(src='https://placeholdit.imgix.net/~text?txtsize=85&txt=1022×575&w=1022&h=575')
-
+          //- img.image-responsive(src='https://placeholdit.imgix.net/~text?txtsize=85&txt=1022×575&w=1022&h=575')
+          //- img#articleHeaderImage.image-responsive(src='https://placeholdit.imgix.net/~text?txtsize=85&txt=1022×575&w=1022&h=575')
+          img#articleHeaderImage.image-responsive(src='#{articles[0].articlepic}')
 
 
         //article content
