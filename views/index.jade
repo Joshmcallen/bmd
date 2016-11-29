@@ -1,11 +1,18 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-
-
-
-
 
   
+  .container
+    .row
+      each article, i in articles
+        .col-sm-6.col-md-4.col-lg-3
+          a(href='/#{article.category}') #{article.category}
+          a(href = '/article/#{article._id}' )
+            img#imageThumbnail.img-responsive(src='#{article.articlepic}')
+            //- img#imageThumbnail.img-responsive(src='http://placehold.it/300x172')
+          h3 #{article.title}
+          p By #{article.authorname} #{article.articleDate}
+          p #{article.byline}
+          //- p
+          //-   a(href='/author/#{article.authorname}') #{article.authorname}

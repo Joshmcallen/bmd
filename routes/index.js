@@ -5,8 +5,12 @@ var multer = require('multer');
 // var upload = multer({dest: 'public/images/uploads'});
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', function(req, res, next){
+  var articles = req.db.get('articles');
+  articles.find({}, {sort: {articleDate: -1} }, function(e, articles) {
+    if (e) throw e;
+    res.render('index', {title: 'Birth.Movies.Death', articles: articles});
+    });
 });
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +19,7 @@ router.get('/news', function(req, res, next){
   var articles = req.db.get('articles');
   articles.find({"category": "News"}, {sort: {articleDate: -1} }, function(e, articles) {
     if (e) throw e;
-    res.render('news', {title: 'News', articles: articles});
+    res.render('news', {title: 'News | Birth.Movies.Death', articles: articles});
     });
 });
 
@@ -23,7 +27,7 @@ router.get('/reviews', function(req, res, next){
   var articles = req.db.get('articles');
   articles.find({"category": "Reviews"}, {sort: {articleDate: -1} }, function(e, articles) {
     if (e) throw e;
-    res.render('reviews', {title: 'reviews temp', articles: articles});
+    res.render('reviews', {title: 'Reviews | Birth.Movies.Death', articles: articles});
     });
 });
 
@@ -31,7 +35,7 @@ router.get('/trailers', function(req, res, next){
   var articles = req.db.get('articles');
   articles.find({"category": "Trailers"}, {sort: {articleDate: -1} }, function(e, articles) {
     if (e) throw e;
-    res.render('trailers', {title: 'trailers temp', articles: articles});
+    res.render('trailers', {title: 'Trailers | Birth.Movies.Death', articles: articles});
     });
 });
 
@@ -39,7 +43,7 @@ router.get('/podcasts', function(req, res, next){
   var articles = req.db.get('articles');
   articles.find({"category": "Podcasts"}, {sort: {articleDate: -1} }, function(e, articles) {
     if (e) throw e;
-    res.render('podcasts', {title: 'Podcasts', articles: articles});
+    res.render('podcasts', {title: 'Podcasts | Birth.Movies.Death', articles: articles});
     });
 });
 ////////////////////////////////////////////////////////////////////////////////
@@ -55,7 +59,7 @@ router.get('/article/:id', function(req, res, next){
   articles.find( {_id : _id}, {}, function(e, articles) {
     if (e) throw e;
     console.log(articles);
-    res.render('article', {title: 'temp', articles: articles});
+    res.render('article', {title: 'Birth.Movies.Death', articles: articles});
     });
 });
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,7 +74,7 @@ router.get('/author/:id', function(req, res, next){
   authors.find( {_id : _id}, {}, function(e, authors) {
     if (e) throw e;
     console.log(authors);
-    res.render('authorpage', {title: 'temp authorpage', authors: authors});
+    res.render('authorpage', {title: '#{authors | Birth.Movies.Death', authors: authors});
     });
 });
 ////////////////////////////////////////////////////////////////////////////////
@@ -83,7 +87,7 @@ router.get('/movies', function(req, res, next) {
   var movies = req.db.get('movies');
   movies.find({}, {}, function(e, movies) {
     if (e) throw e;
-    res.render('movies', {title: 'temp movies', movies: movies});
+    res.render('movies', {title: 'Movies | Birth.Movies.Death', movies: movies});
   });
 });
 router.get('/movies/:id', function(req, res, next){
@@ -93,7 +97,7 @@ router.get('/movies/:id', function(req, res, next){
   movies.find( {_id: _id}, {}, function(e, movies) {
     if (e) throw e;
     console.log(movies);
-    res.render('moviespage', {title: 'temp movies', movies: movies});
+    res.render('moviespage', {title: 'Movies | Birth.Movies.Death', movies: movies});
   });
 });
 ////////////////////////////////////////////////////////////////////////////////
@@ -226,19 +230,19 @@ router.post('/addmovie', function(req, res, next){
 /////////////////////Footer Views/////////////////////////////
 ///////////////////////////////////////////////////////////////
 router.get('/about', function(req, res, next){
-  res.render('about', {title: 'About'});
+  res.render('about', {title: 'About | Birth.Movies.Death'});
 });
 router.get('/advertise', function(req, res, next){
-  res.render('advertise', {title: 'Advertise'});
+  res.render('advertise', {title: 'Advertise | Birth.Movies.Death'});
 });
 router.get('/contact', function(req, res, next){
-  res.render('contact', {title: 'Contact'});
+  res.render('contact', {title: 'Contact | Birth.Movies.Death'});
 });
 router.get('/privacy', function(req, res, next){
-  res.render('privacy', {title: 'Privacy'});
+  res.render('privacy', {title: 'Privacy | Birth.Movies.Death'});
 });
 router.get('/terms', function(req, res, next){
-  res.render('terms', {title: 'Terms'});
+  res.render('terms', {title: 'Terms | Birth.Movies.Death'});
 });
 ///////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////
