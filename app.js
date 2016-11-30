@@ -4,8 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var dotenv = require('dotenv');
-dotenv.load()
+// var dotenv = require('dotenv');
+// dotenv.load()
+if(process.env.NODE_ENV !== 'production')  require('dotenv').config();
 //////////////////// Multer /////////////////////////
 var multer = require('multer');
 // var upload = multer({dest: 'public/images/uploads'});
@@ -28,7 +29,8 @@ app.set('view engine', 'jade');
 
 //Multer
 // app.use(multer({dest: 'public/images/uploads'}).single('moviepic'));
-app.use(multer({dest: 'public/images/uploads'}).any('moviepic', 'authorpic', 'articlepic'));
+// app.use(multer({dest: 'public/images/uploads'}).any('moviepic', 'authorpic', 'articlepic'));
+app.use(multer({dest: 'public/images/uploads'}).single('articlepic'));
 // app.use(multer({dest: 'public/images/uploads'}).single('authorpic'));
 
 // uncomment after placing your favicon in /public
