@@ -87,15 +87,18 @@ html
                 //- h1
                 //-   a(href='/author/#{articles[0].authorname}') #{articles[0].authorname}
                 h2.articleTitle #{articles[0].title}
-                h4.articleByline #{articles[0].byline}
-                h5.articleAuthor By #{articles[0].authorname}
+                h4.articleByline 
+                  strong #{articles[0].byline}
+                h6.articleAuthor By #{articles[0].authorname}
                   //- a(href='/author/#{articles[0].authorname}') #{articles[0].authorname}
+                br
+                br
                 p.articleContent !{articles[0].content.replace(/\n/g, '<br/>')}
-                //- p.articleContent !{escape(articles[0].content).replace(/\n/g, '<br/>')}
+                //- p.articleContent !{escape(articles[0].content).replace(/\n/g, '<br/>')}     
         .container
           .row
               #authorbiodiv.col-sm-12.col-md-12.col-lg-12
-                h4.author #{articles[0].authorname}
+                //- h4.author #{articles[0].authorname}
                 
                      
 
