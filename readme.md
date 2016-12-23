@@ -1,4 +1,4 @@
-# Project 2 of Code RGV Boot web development class.
+# Code RGV Boot, Project 2
 My attempt at recreating the website [birthmoviesdeath.com](http://birthmoviesdeath.com/)
 
 # Live Demo
