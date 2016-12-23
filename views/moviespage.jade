@@ -16,7 +16,8 @@ block content
               p #{movie.releasedate}
               p #{movie.description}
               hr
-              p Trailer #{movie.trailer}
+              a.btn.btn-default(href='#{movie.trailer}') Trailer
+              //- p Trailer #{movie.trailer}
               hr
               //- p Cast: #{movie.cast}
               //- div

@@ -20,7 +20,9 @@ block content
             a(href='/#{article.category}') #{article.category}
             a(href = '/article/#{article._id}' )
               img#imageThumbnail.img-responsive(src='#{article.articlepic}')
-            p By #{article.authorname} #{article.articleDate}
+            h3 
+              strong #{article.title}
+            h6.fadetext By #{article.authorname} #{article.articleDate}
             p #{article.byline}
             p
               a(href='/author/#{article.authorname}') #{article.authorname}

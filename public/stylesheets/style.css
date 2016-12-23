@@ -157,3 +157,13 @@ a {
 .fadetext {
   color: #a6a4a4
 }
+
+.btn-default {
+  background-color: #e0e0e0;
+  border-color: #e0e0e0;
+}
+
+.btn-default:hover {
+  background-color: #a2a4a6;
+  border-color: #a2a4a6;
+}
