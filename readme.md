@@ -1,4 +1,4 @@
-# Code RGV Boot, Project 2
+# Project 2, CodeRGV Boot
 My attempt at recreating the website [birthmoviesdeath.com](http://birthmoviesdeath.com/)
 
 # Live Demo
