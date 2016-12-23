@@ -1,5 +1,5 @@
 # bmd
-My attempt at recreating the website birth.movies.death.com
+My attempt at recreating the website Birth.Movies.Death.com
 
 # Live Demo
 [bmd](https://birthmoviesdeath-jg.herokuapp.com/)
